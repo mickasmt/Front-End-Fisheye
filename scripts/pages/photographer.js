@@ -31,14 +31,15 @@ async function displayData(photographer) {
   const photographerModel = photographerFactory(photographer);
   const InfosUserDOM = photographerModel.getInfosUserDOM();
   const UserImgDOM = photographerModel.getUserImgDOM();
-  
+
   infosProfile.appendChild(InfosUserDOM);
   imgProfile.appendChild(UserImgDOM);
 }
 
 async function init() {
-  // Récupère les datas des photographes
+  // Récupère les données du photographe
   const photographer = await getPhotographerById();
+  // const images = await getGalleryByUserId();
   displayData(photographer);
   // console.log(photographer);
 }
