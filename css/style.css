@@ -74,17 +74,17 @@ h1 {
 
 .photographer_section article div p.location {
     color: #901C1C;
-    font-size: 15px;
+    font-size: 17px;
 }
 
 .photographer_section article div p.tagline {
     color: #000;
-    font-size: 14px;
+    font-size: 13px;
 }
 
 .photographer_section article div p.price {
     color: #525252;
-    font-size: 14px;
+    font-size: 12px;
 }
 
 @media screen and (max-width: 1050px) {

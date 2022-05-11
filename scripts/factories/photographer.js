@@ -50,5 +50,38 @@ function photographerFactory(data) {
 
         return (article);
     }
-    return { name, picture, getUserCardDOM }
+
+    function getInfosUserDOM() {
+        // create title 
+        const h1 = document.createElement( 'h1' );
+        h1.textContent = name;
+
+        // create paragraphe for city / country
+        const location = document.createElement( 'p' );
+        location.textContent = city +", "+ country;
+        location.classList.add("location");
+        
+        // create paragraphe for tagline
+        const taglinePar = document.createElement( 'p' );
+        taglinePar.textContent = tagline;
+        taglinePar.classList.add("tagline");
+        
+        // create div 
+        const div = document.createElement( 'div' );
+        div.appendChild(h1);
+        div.appendChild(location);
+        div.appendChild(taglinePar);
+
+        return (div);
+    }
+
+    function getUserImgDOM() {
+        // create img tag for user profile img
+        const img = document.createElement( 'img' );
+        img.setAttribute("src", picture);
+        img.setAttribute("alt", name);
+
+        return (img);
+    }
+    return { name, picture, getUserCardDOM, getUserImgDOM, getInfosUserDOM }
 }

@@ -13,16 +13,26 @@
   <body>
     <header>
       <a href="/">
-        <img src="assets/images/logo.png" class="logo" alt="Fisheye Home page" />
+        <img
+          src="assets/images/logo.png"
+          class="logo"
+          alt="Fisheye Home page"
+        />
       </a>
     </header>
+
     <main id="main">
       <div class="photograph-header">
+        <div class="infos" id="infos"></div>
+
         <button class="contact_button" onclick="displayModal()">
           Contactez-moi
         </button>
+
+        <div id="photoProfile"></div>
       </div>
     </main>
+
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -38,6 +48,9 @@
         </form>
       </div>
     </div>
+
+    <script src="/scripts/factories/photographer.js"></script>
+    <script src="/scripts/pages/photographer.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
