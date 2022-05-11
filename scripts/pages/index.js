@@ -5,6 +5,12 @@
         try {
             let res = await fetch(pathFileData);
             return await res.json();
+            
+            // let response = await res.json();
+            // console.log(response.photographers);
+            // return {
+            //     photographers: response.photographers
+            // };
         } catch (error) {
             console.log(error);
         }
