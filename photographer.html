@@ -11,7 +11,8 @@
     <title>Fisheye - photographe</title>
   </head>
   <body>
-    <header>
+    <!-- Navigation bar -->
+    <header class="container">
       <a href="/">
         <img
           src="assets/images/logo.png"
@@ -20,8 +21,10 @@
         />
       </a>
     </header>
+    <!-- End navigation bar -->
 
-    <main id="main">
+    <main class="container" id="main">
+      <!-- Infos user -->
       <div class="photograph-header">
         <div class="infos" id="infos"></div>
 
@@ -31,8 +34,83 @@
 
         <div id="photoProfile"></div>
       </div>
+      <!-- End infos user -->
+
+      <!-- Sort section -->
+      <div class="sortby_section">
+        <p>Trier par</p>
+
+        <div class="custom-select">
+          <select>
+            <option value="0">Selectionner</option>
+            <option value="0">Popularité</option>
+            <option value="1">Date</option>
+            <option value="2">Titre</option>
+          </select>
+        </div>
+      </div>
+      <!-- End sort section -->
+
+      <!-- Gallery section -->
+      <div class="gallery_section">
+        <article>
+          <img src="./assets/photographers/gallery/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
+          <div class="infos-wrapper">
+            <p>Arc-en-ciel</p>
+            <div class="like">
+              <span>12</span>
+              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <img src="./assets/photographers/gallery/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
+          <div class="infos-wrapper">
+            <p>Arc-en-ciel</p>
+            <div class="like">
+              <span>12</span>
+              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <img src="./assets/photographers/gallery/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
+          <div class="infos-wrapper">
+            <p>Arc-en-ciel</p>
+            <div class="like">
+              <span>12</span>
+              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
+            </div>
+          </div>
+        </article>
+
+        <article>
+          <img src="./assets/photographers/gallery/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
+          <div class="infos-wrapper">
+            <p>Arc-en-ciel</p>
+            <div class="like">
+              <span>12</span>
+              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
+            </div>
+          </div>
+        </article>
+      </div>
+      <!-- End gallery section -->
     </main>
 
+    <!-- Total likes & price -->
+    <div class="likesCounter">
+      <div class="likes">
+        <span id="total_likes">252 255</span>
+        <img class="icon-heart" src="/assets/icons/black_heart.png" alt="likes">
+      </div>
+      <span id="user_price">300€ / jour</span>
+    </div>
+    <!-- End total likes & price -->
+
+    <!-- Modal -->
     <div id="contact_modal">
       <div class="modal">
         <header>
@@ -48,9 +126,12 @@
         </form>
       </div>
     </div>
+    <!-- End Modal -->
 
+    <!-- Scripts -->
     <script src="/scripts/factories/photographer.js"></script>
     <script src="/scripts/pages/photographer.js"></script>
+    <script src="/scripts/utils/customSelect.js"></script>
     <script src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>

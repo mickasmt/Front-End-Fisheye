@@ -5,7 +5,6 @@
 .photograph-header {
     background-color: #FAFAFA;
     height: 300px;
-    margin: 0 100px;
     padding: 0 4rem;
     display: flex;
     flex-direction: row;
@@ -57,6 +56,161 @@
     cursor: pointer;
 }
 
+/* SortBy Section */
+.sortby_section {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+}
+
+.sortby_section p {
+    font-size: 18px;
+    font-weight: 700;
+    margin-right: 25px;
+}
+
+
+/* Custom select */
+.custom-select {
+    position: relative;
+    width: 170px;
+    border-radius: 5px;
+    overflow: visible;
+}
+
+.custom-select select {
+    display: none;
+    /*hide original SELECT element: */
+}
+
+.select-selected {
+    background-color: #901C1C;
+}
+
+/* Style the arrow inside the select element: */
+.select-selected:after {
+    position: absolute;
+    content: "";
+    top: 14px;
+    right: 10px;
+    width: 0;
+    height: 0;
+    border: 6px solid transparent;
+    border-color: #fff transparent transparent transparent;
+}
+
+/* Point the arrow upwards when the select box is open (active): */
+.select-selected.select-arrow-active:after {
+    border-color: transparent transparent #fff transparent;
+    top: 7px;
+}
+
+/* style the items (options), including the selected item: */
+.select-items div, .select-selected {
+    color: #ffffff;
+    padding: 8px 16px;
+    border: 1px solid transparent;
+    border-color: transparent transparent rgba(0, 0, 0, 0.1) transparent;
+    cursor: pointer;
+}
+
+/* Style items (options): */
+.select-items {
+    position: absolute;
+    background-color: #901C1C;
+    top: 100%;
+    left: 0;
+    right: 0;
+    z-index: 99;
+}
+
+/* Hide the items when the select box is closed: */
+.select-hide {
+    display: none;
+}
+
+.select-items div:hover, .same-as-selected {
+    background-color: rgba(0, 0, 0, 0.1);
+}
+
+
+/* Gallery Styles */
+.gallery_section {
+    display: grid;
+    grid-template-columns: repeat(3, auto);
+    row-gap: 30px;
+    column-gap: 95px;
+    margin-top: 50px;
+}
+
+.gallery_section article {
+    display: block;
+    width: 350px;
+}
+
+
+.gallery_section article img {
+    height: 300px;
+    width: 100%;
+    object-fit: cover;
+    border-radius: 5px;
+    overflow: hidden;
+}
+
+.gallery_section article .infos-wrapper {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 31px;
+}
+
+article .infos-wrapper p {
+    margin: 0;
+}
+
+article .infos-wrapper .like img {
+    width: 18.5px;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Likes Counter Styles */
+.likesCounter {
+    box-sizing: border-box;
+    height: 68px;
+    width: 376px;
+    border-radius: 5px 5px 0 0;
+    padding: 21px 34px;
+    position: fixed;
+    right: 4%;
+    bottom: 0;
+
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #DB8876;
+    color: #000;
+    font-size: 24px;
+    font-weight: 500;
+}
+.likesCounter .likes {
+    display: flex;
+    align-items: center;
+}
+.likesCounter .likes img {
+    padding-left: 5px;
+    width: 18.5px;
+    height: auto;
+    object-fit: cover;
+    cursor: pointer;
+}
+
+/* Modal Styles */
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
