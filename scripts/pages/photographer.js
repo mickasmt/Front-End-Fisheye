@@ -1,7 +1,7 @@
-//Mettre le code JavaScript lié à la page photographer.html
-async function getPhotographerById() {
-  const pathFileData = "./data/photographers.json";
+// get user data with id in url
+const pathFileData = "./data/photographers.json";
 
+async function getPhotographerById() {
   // get params id in current url
   const params = new URL(document.location).searchParams;
   const id = parseInt(params.get("id"));
@@ -13,9 +13,9 @@ async function getPhotographerById() {
     let photographer = null;
 
     data.photographers.forEach((item) => {
-      if (item.id === id) { 
+      if (item.id === id) {
         photographer = item;
-      };
+      }
     });
 
     return photographer;
@@ -24,7 +24,23 @@ async function getPhotographerById() {
   }
 }
 
-async function displayData(photographer) {
+// get all images for photographer with userId
+async function getGalleryByUserId(userId) {
+  // fetch data
+  try {
+    let res = await fetch(pathFileData);
+    let data = await res.json();
+
+    let images = data.media.filter(media => media.photographerId === userId);
+    // console.log(images);
+
+    return images;
+  } catch (error) {
+    console.log(error);
+  }
+}
+
+async function displayUserData(photographer) {
   const infosProfile = document.querySelector("#infos");
   const imgProfile = document.querySelector("#photoProfile");
 
@@ -36,12 +52,24 @@ async function displayData(photographer) {
   imgProfile.appendChild(UserImgDOM);
 }
 
+async function displayGallery(images, photographer) {
+  const gallerySection = document.querySelector(".gallery_section");
+  const firstname = photographer.name.split(" ")[0].replace("-", " ");
+
+  images.forEach((image) => {
+      const mediaModel = mediaFactory(image, firstname);
+      const mediaCardDOM = mediaModel.getMediaCardDOM();
+      gallerySection.appendChild(mediaCardDOM);
+  });
+}
+
 async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
-  // const images = await getGalleryByUserId();
-  displayData(photographer);
-  // console.log(photographer);
+  const images = await getGalleryByUserId(photographer.id);
+
+  displayUserData(photographer);
+  displayGallery(images, photographer);
 }
 
 init();
