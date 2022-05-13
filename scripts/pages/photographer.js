@@ -67,6 +67,7 @@ async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
+  // console.log(images);
 
   displayUserData(photographer);
   displayGallery(images, photographer);

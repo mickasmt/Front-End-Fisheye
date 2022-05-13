@@ -145,13 +145,12 @@
 
 .gallery_section article {
     display: block;
-    width: 350px;
 }
 
-
-.gallery_section article img {
+.gallery_section article a video,
+.gallery_section article a img {
     height: 300px;
-    width: 100%;
+    width: 350px;
     object-fit: cover;
     border-radius: 5px;
     overflow: hidden;
@@ -165,20 +164,30 @@
     color: #901C1C;
     font-weight: 400;
     font-size: 24px;
-    line-height: 31px;
+    /* line-height: 31px; */
 }
 
 article .infos-wrapper p {
     margin: 0;
+    /* add line clamp for show one line  */
+    overflow: hidden;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+    -webkit-line-clamp: 1;
 }
 
-article .infos-wrapper .like img {
-    width: 18.5px;
-    height: auto;
+article .infos-wrapper .like {
+    display: flex;
+    align-items: center;
+}
+
+img.icon-heart {
+    width: 100%;
+    padding-left: 5px;
+    height: 18.5px;
     object-fit: cover;
     cursor: pointer;
 }
-
 /* Likes Counter Styles */
 .likesCounter {
     box-sizing: border-box;

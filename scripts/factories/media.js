@@ -1,47 +1,62 @@
-function mediaFactory(data, photographer) {
-    const { id, likes, photographerId, price, title, video, date } = data;
+function mediaFactory(data, firstname) {
+    const { id, likes, photographerId, price, title } = data;
 
-    const picture = `assets/photographers/${portrait}`;
+    // check if image or video and return DOM element
+    function getMediaTypeDOM() {
+        const galleryUrl = `assets/gallery/${firstname}/`;
+
+        if(data.hasOwnProperty('image'))
+        {
+            const img = document.createElement( 'img' );
+            img.src = galleryUrl + data.image;
+            img.alt = " ";
+            
+            return img;
+        }
+
+        if(data.hasOwnProperty('video'))
+        {
+            const video = document.createElement('video');
+            video.src = galleryUrl + data.video;
+
+            return video;
+        }
+    }
 
     function getMediaCardDOM() {
         const article = document.createElement( 'article' );
 
-        // create img tag
-        const img = document.createElement( 'img' );
-        img.setAttribute("src", picture);
-        img.setAttribute("alt", name);
-
-        // create title 
-        const h2 = document.createElement( 'h2' );
-        h2.textContent = name;
-
-        // create link for to go photographer page
+        // create link for img or video 
         const a = document.createElement( 'a' );
-        a.setAttribute("href", url);
-        a.appendChild(img);
-        a.appendChild(h2);
+        a.setAttribute("href", "#");
+        // const media = getMediaTypeDOM();
+        // console.log(media);
+        a.appendChild(getMediaTypeDOM());
 
-        // create paragraphe for city / country
-        const location = document.createElement( 'p' );
-        location.textContent = city +", "+ country;
-        location.classList.add("location");
+        // create paragraphe for title
+        const titleElt = document.createElement( 'p' );
+        titleElt.textContent = title;
         
-        // create paragraphe for tagline
-        const taglinePar = document.createElement( 'p' );
-        taglinePar.textContent = tagline;
-        taglinePar.classList.add("tagline");
+        // create likes part
+        const likesWrapper = document.createElement( 'div' );
+        likesWrapper.classList.add("like");
 
+        const span = document.createElement( 'span' );
+        span.textContent = likes;
 
-        // create paragraphe for price
-        const pricePar = document.createElement( 'p' );
-        pricePar.textContent = price +"€/jour";
-        pricePar.classList.add("price");
+        const imgHeart = document.createElement( 'img' );
+        imgHeart.classList.add("icon-heart");
+        imgHeart.src = "/assets/icons/red_heart.png";
+        imgHeart.alt = "likes";
+
+        likesWrapper.appendChild(span);
+        likesWrapper.appendChild(imgHeart);
         
-        // create div for static text (city, country, tagline, price)
+        // create div for infos-wrapper (title + likes)
         const div = document.createElement( 'div' );
-        div.appendChild(location);
-        div.appendChild(taglinePar);
-        div.appendChild(pricePar);
+        div.classList.add("infos-wrapper");
+        div.appendChild(titleElt);
+        div.appendChild(likesWrapper);
 
         // create article
         article.appendChild(a);
@@ -50,5 +65,5 @@ function mediaFactory(data, photographer) {
         return (article);
     }
 
-    return { getMediaCardDOM }
+    return { getMediaTypeDOM, getMediaCardDOM }
 }
