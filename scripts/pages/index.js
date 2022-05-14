@@ -1,5 +1,5 @@
 async function getPhotographers() {
-    const pathFileData = "./data/photographers.json";
+    const pathFileData = "../../data/photographers.json";
 
     // fetch data in file json and return
     try {

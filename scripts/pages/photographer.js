@@ -1,5 +1,5 @@
 // get user data with id in url
-const pathFileData = "./data/photographers.json";
+const pathFileData = "../../data/photographers.json";
 
 async function getPhotographerById() {
   // get params id in current url
