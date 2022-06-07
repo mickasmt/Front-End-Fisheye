@@ -40,18 +40,23 @@ async function getGalleryByUserId(userId) {
   }
 }
 
+// display all infos of photographer
 async function displayUserData(photographer) {
   const infosProfile = document.querySelector("#infos");
   const imgProfile = document.querySelector("#photoProfile");
+  const titleContact = document.querySelector("#titleContact");
 
   const photographerModel = photographerFactory(photographer);
   const InfosUserDOM = photographerModel.getInfosUserDOM();
   const UserImgDOM = photographerModel.getUserImgDOM();
 
+  titleContact.textContent +=  photographerModel.name();
+  // titleContact.innerHTML += "<br/>" + photographerModel.name();
   infosProfile.appendChild(InfosUserDOM);
   imgProfile.appendChild(UserImgDOM);
 }
 
+// display all images/videos of photographers
 async function displayGallery(images, photographer) {
   const gallerySection = document.querySelector(".gallery_section");
   const firstname = photographer.name.split(" ")[0].replace("-", " ");

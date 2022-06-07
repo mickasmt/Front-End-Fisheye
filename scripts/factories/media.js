@@ -10,6 +10,7 @@ function mediaFactory(data, firstname) {
             const img = document.createElement( 'img' );
             img.src = galleryUrl + data.image;
             img.alt = " ";
+            img.loading = "lazy";
             
             return img;
         }

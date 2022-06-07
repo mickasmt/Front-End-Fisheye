@@ -220,10 +220,21 @@ img.icon-heart {
 }
 
 /* Modal Styles */
+#contact_modal {
+    z-index: 10;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0,0,0,0.4);
+    overflow: auto;
+}
+
 .modal {
     border-radius: 5px;
     background-color: #DB8876;
-    width: 50%;
+    width: 669px;
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -234,6 +245,7 @@ img.icon-heart {
 
 .modal header {
     justify-content: space-between;
+    align-self: start;
     width: 100%;
 }
 
@@ -241,10 +253,12 @@ img.icon-heart {
     cursor: pointer;
 }
 
-.modal header h2 {
+.modal header h1 {
     font-size: 64px;
+    color: #000;
     font-weight: normal;
-    text-align: center;
+    text-align: left;
+    line-height: 83px;
 }
 
 form {
@@ -252,11 +266,13 @@ form {
     width: 100%;
     flex-direction: column;
     align-items: flex-start;
+    margin-top: 40px;
 }
 
 form label {
     color: #312E2E;
     font-size: 36px;
+    /* padding: 4px 0; */
 }
 
 form div {
@@ -264,7 +280,6 @@ form div {
     flex-direction: column;
     width: 100%;
     align-items: self-start;
-    margin-bottom: 26px;
 }
 
 form input {
@@ -272,4 +287,11 @@ form input {
     height: 68px;
     border: none;
     border-radius: 5px;
+}
+form input#message {
+    height: 170px;
+}
+
+form button {
+    margin-top: 26px;
 }

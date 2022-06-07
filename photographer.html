@@ -96,15 +96,31 @@
     <div id="contact_modal">
       <div class="modal">
         <header>
-          <h2>Contactez-moi</h2>
+          <h1 id="titleContact">Contactez-moi </h1>
           <img src="assets/icons/close.svg" onclick="closeModal()" />
         </header>
-        <form>
+        <form method="get" id="contactForm">
           <div>
-            <label>Prénom</label>
-            <input />
+            <label for="firstname">Prénom</label>
+            <input type="text" name="firstname"/>
           </div>
-          <button class="contact_button">Envoyer</button>
+
+          <div>
+            <label for="lastname">Nom</label>
+            <input type="text" name="lastname"/>
+          </div>
+
+          <div>
+            <label for="email">Email</label>
+            <input type="email" name="email"/>
+          </div>
+
+          <div>
+            <label for="message">Votre message</label>
+            <input type="text" name="message" id="message"/>
+          </div>
+
+          <button type="submit" class="contact_button">Envoyer</button>
         </form>
       </div>
     </div>
