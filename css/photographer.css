@@ -297,25 +297,68 @@ form button {
 /* Lightbox modal */
 #lightbox_modal {
     display: none;
-    z-index: 10;
+    z-index: 1;
     position: fixed;
-    top: 0;
-    left: 0;
+    inset: 0;
     width: 100%;
     height: 100%;
     margin: 0 auto;
-    background-color: rgba(0,0,0,0.5);
+    background-color: rgba(255,255,255, 0.5);
     overflow: auto;
 }
 
 .lightbox {
-    border-radius: 5px;
-    background-color: rgb(211, 3, 3);
-    width: 1000px;
+    position: relative;
+    background-color: #fff;
     display: flex;
-    flex-direction: column;
+    margin: 0 auto;
+    padding: 60px;
+    width: auto;
+    max-width: 1250px;
+    max-height: 100%;
+    box-sizing: border-box;
+    display: flex;
     align-items: center;
-    justify-content: space-between;
-    padding: 35px;
-    margin: auto;
+}
+
+.lightbox .right {
+    position: relative;
+    display: flex;
+    height: 100%;
+    align-items: center;
+    justify-items: center;
+}
+  
+.lightbox .right .close {
+    color: #901C1C;
+    position: absolute;
+    top: 0;
+}
+
+.slides_section {
+    display: block;
+    width: 100%;
+    height: 100%;
+}
+.slides_section {
+    padding: 0 34px;
+}
+.slide {
+    display: none;
+    width: 100%;
+    height: 100%;
+}
+.slide p {
+    display: none;
+    margin: 12px 0;
+    color: #901C1C;
+    font-weight: 400;
+    font-size: 24px;
+}
+.slide img,
+.slide video {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
 }

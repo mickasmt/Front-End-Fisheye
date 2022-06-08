@@ -129,10 +129,18 @@
     <!-- Lightbox Modal -->
     <div id="lightbox_modal">
       <div class="lightbox">
-        <header>
-          <img src="assets/icons/close.svg" onclick="closeLightbox()" />
-        </header>
+        <div>
+          <a href="#" onclick="plusSlides(-1)">
+            <img src="assets/icons/arrow-left.svg" />
+          </a>
+        </div>
         <div class="slides_section"></div>
+        <div class="right">
+          <a href="#" onclick="plusSlides(1)">
+            <img src="assets/icons/arrow-right.svg" />
+          </a>
+          <img class="close" src="assets/icons/close-red.svg" onclick="closeLightbox()" />
+        </div>
       </div>
     </div>
     <!-- End Lightbox Modal -->

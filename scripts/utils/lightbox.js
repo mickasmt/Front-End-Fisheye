@@ -11,21 +11,17 @@ function closeLightbox() {
   document.getElementById("lightbox_modal").style.display = "none";
 }
 
+var currentIndex = 0;
 
 function plusSlides(n) {
-  showSlides(slideIndex += n);
-}
-
-function currentSlide(n) {
-  showSlides(slideIndex = n);
+  if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 
 function showSlides(index) {
   var slides = document.getElementsByClassName("slide");
-  console.log(slides);
-  var currentIndex = index;
+  currentIndex = index;
   
-  if (index > slides.length) {
+  if (index >= slides.length) {
     currentIndex = 0;
   }
 
