@@ -88,5 +88,13 @@ function photographerFactory(data) {
 
         return (img);
     }
-    return { name, picture, getUserCardDOM, getUserImgDOM, getInfosUserDOM }
+
+    return {
+        name,
+        // picture,
+        totalLikes,
+        getUserCardDOM,
+        getUserImgDOM,
+        getInfosUserDOM
+    }
 }

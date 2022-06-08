@@ -22,7 +22,7 @@ function mediaFactory(data, firstname) {
             video.src = galleryUrl + data.video;
 
             if(videoDetails) {
-                // add 
+                video.controls = true; 
             }
 
             return video;
