@@ -2,6 +2,7 @@ function mediaFactory(data, firstname) {
     const { id, likes, photographerId, price, title } = data;
 
     // check if image or video and return DOM element
+    // add params for details video attribute for play in lightbox
     function getMediaTypeDOM() {
         const galleryUrl = `assets/gallery/${firstname}/`;
 
