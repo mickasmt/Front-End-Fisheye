@@ -57,14 +57,24 @@ async function displayUserData(photographer) {
 }
 
 // display all images/videos of photographers
-async function displayGallery(images, photographer) {
+async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
-  const firstname = photographer.name.split(" ")[0].replace("-", " ");
+
+  images.forEach((image, index) => {
+      const mediaModel = mediaFactory(image, firstname);
+      const mediaCardDOM = mediaModel.getMediaCardDOM(index);
+      gallerySection.appendChild(mediaCardDOM);
+  });
+}
+
+// create all slides for lightbox
+async function createSlidesLightbox(images, firstname) {
+  const slidesSection = document.querySelector(".slides_section");
 
   images.forEach((image) => {
       const mediaModel = mediaFactory(image, firstname);
-      const mediaCardDOM = mediaModel.getMediaCardDOM();
-      gallerySection.appendChild(mediaCardDOM);
+      const mediaSlideDOM = mediaModel.getMediaSlideDOM();
+      slidesSection.appendChild(mediaSlideDOM);
   });
 }
 
@@ -72,10 +82,12 @@ async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
-  // console.log(images);
+
+  const firstname = photographer.name.split(" ")[0].replace("-", " ");
 
   displayUserData(photographer);
-  displayGallery(images, photographer);
+  displayGallery(images, firstname);
+  createSlidesLightbox(images, firstname);
 }
 
 init();

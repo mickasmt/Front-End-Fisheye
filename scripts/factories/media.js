@@ -3,8 +3,8 @@ function mediaFactory(data, firstname) {
 
     // check if image or video and return DOM element
     // add params for details video attribute for play in lightbox
-    function getMediaTypeDOM() {
-        const galleryUrl = `assets/gallery/${firstname}/`;
+    function getMediaTypeDOM(videoDetails) {
+        const galleryUrl = `/assets/gallery/${firstname}/`;
 
         if(data.hasOwnProperty('image'))
         {
@@ -21,19 +21,25 @@ function mediaFactory(data, firstname) {
             const video = document.createElement('video');
             video.src = galleryUrl + data.video;
 
+            if(videoDetails) {
+                // add 
+            }
+
             return video;
         }
     }
 
-    function getMediaCardDOM() {
+    function getMediaCardDOM(index) {
         const article = document.createElement( 'article' );
 
         // create link for img or video 
         const a = document.createElement( 'a' );
         a.setAttribute("href", "#postID="+id);
         a.appendChild(getMediaTypeDOM());
+        
+        // pass index in display lightbox function
         a.addEventListener('click', function(){
-            displayLightbox(id);
+            displayLightbox(index);
         })
 
         // create paragraphe for title
@@ -68,5 +74,20 @@ function mediaFactory(data, firstname) {
         return (article);
     }
 
-    return { getMediaTypeDOM, getMediaCardDOM }
+    function getMediaSlideDOM() {        
+        // create paragraphe for title
+        const titleElt = document.createElement( 'p' );
+        titleElt.textContent = title;
+        
+        // create slide content
+        const div = document.createElement( 'div' );
+        div.classList.add("slide");
+
+        div.appendChild(getMediaTypeDOM(true));
+        div.appendChild(titleElt);
+
+        return (div);
+    }
+
+    return { getMediaTypeDOM, getMediaCardDOM, getMediaSlideDOM }
 }
