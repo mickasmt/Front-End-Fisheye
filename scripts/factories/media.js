@@ -30,10 +30,11 @@ function mediaFactory(data, firstname) {
 
         // create link for img or video 
         const a = document.createElement( 'a' );
-        a.setAttribute("href", "#");
-        // const media = getMediaTypeDOM();
-        // console.log(media);
+        a.setAttribute("href", "#postID="+id);
         a.appendChild(getMediaTypeDOM());
+        a.addEventListener('click', function(){
+            displayLightbox(id);
+        })
 
         // create paragraphe for title
         const titleElt = document.createElement( 'p' );
