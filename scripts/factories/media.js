@@ -34,7 +34,7 @@ function mediaFactory(data, firstname) {
 
         // create link for img or video 
         const a = document.createElement( 'a' );
-        a.setAttribute("href", "#postID="+id);
+        a.setAttribute("href", "#");
         a.appendChild(getMediaTypeDOM());
         
         // pass index in display lightbox function
