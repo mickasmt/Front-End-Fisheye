@@ -60,7 +60,7 @@ function mediaFactory(data, firstname) {
 
         // pass id in addLike function for increase post like
         imgHeart.addEventListener('click', function(){
-            addLike(id);
+            addLike(id, index);
         })
 
         likesWrapper.appendChild(span);

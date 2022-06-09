@@ -1,6 +1,15 @@
+/**
+ * VARIABLES
+ */
+var postsGallery, firstname, array_likes;
+
+
 // get user data with id in url
 const pathFileData = window.location.origin + "/data/photographers.json";
-var postsGallery, firstname;
+
+/**
+ * FUNCTIONS
+ */
 
 async function getPhotographerById() {
   // get params id in current url
@@ -57,6 +66,17 @@ async function displayUserData(photographer) {
   imgProfile.appendChild(UserImgDOM);
 }
 
+// create all slides for lightbox
+async function createSlidesLightbox(images, firstname) {
+  const slidesSection = document.querySelector(".slides_section");
+
+  images.forEach((image) => {
+      const mediaModel = mediaFactory(image, firstname);
+      const mediaSlideDOM = mediaModel.getMediaSlideDOM();
+      slidesSection.appendChild(mediaSlideDOM);
+  });
+}
+
 // display all images/videos of photographers
 async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
@@ -74,23 +94,14 @@ async function displayGallery(images, firstname) {
   getTotalLikes();
 }
 
-// create all slides for lightbox
-async function createSlidesLightbox(images, firstname) {
-  const slidesSection = document.querySelector(".slides_section");
-
-  images.forEach((image) => {
-      const mediaModel = mediaFactory(image, firstname);
-      const mediaSlideDOM = mediaModel.getMediaSlideDOM();
-      slidesSection.appendChild(mediaSlideDOM);
-  });
-}
-
+// init the page
 async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
-  postsGallery = images;
 
+  postsGallery = images;
+  array_likes = new Array(images.length).fill(0);
   firstname = photographer.name.split(" ")[0].replace("-", " ");
 
   displayUserData(photographer);
@@ -101,22 +112,37 @@ async function init() {
 init();
 
 
-// add likes on post
-async function addLike(postId) {
-  const post = postsGallery.find(img => img.id === postId);
-  post.likes++;
 
-  displayGallery(postsGallery, firstname);
-}
+/**
+ * LIKES PART
+ */
 
-// add likes on post
+// count all likes
 async function getTotalLikes() {
-  const totalLikes = document.getElementById("total_likes");
   var likes = 0;
+  const totalLikes = document.getElementById("total_likes");
 
   postsGallery.forEach((post) => {
     likes += post.likes;
   });
 
-  totalLikes.innerHTML = likes;     
+  totalLikes.innerHTML = likes;   
+}
+
+
+
+// add likes on post
+async function addLike(postId, index) {
+  // get post with postId
+  const post = postsGallery.find(img => img.id === postId);
+
+  if(array_likes[index] === 0) {
+    post.likes++;
+    array_likes[index] = 1;
+  } else {
+    post.likes--;
+    array_likes[index] = 0;
+  }
+  
+  displayGallery(postsGallery, firstname);
 }
