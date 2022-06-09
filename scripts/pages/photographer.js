@@ -1,5 +1,5 @@
 // get user data with id in url
-const pathFileData = "../../data/photographers.json";
+const pathFileData = window.location.origin + "/data/photographers.json";
 var postsGallery, firstname;
 
 async function getPhotographerById() {
