@@ -71,7 +71,7 @@ async function displayGallery(images, firstname) {
   });
 
   // update total likes
-  photographerFactory().getTotalLikes(countLikes);
+  getTotalLikes();
 }
 
 // create all slides for lightbox
@@ -110,12 +110,13 @@ async function addLike(postId) {
 }
 
 // add likes on post
-async function countLikes() {
+async function getTotalLikes() {
+  const totalLikes = document.getElementById("total_likes");
   var likes = 0;
 
   postsGallery.forEach((post) => {
     likes += post.likes;
   });
 
-  return likes;
+  totalLikes.innerHTML = likes;     
 }

@@ -89,15 +89,9 @@ function photographerFactory(data) {
         return (img);
     }
 
-    function getTotalLikes(likes) {
-        const totalLikes = document.getElementById("total_likes");
-        totalLikes.innerHTML = likes;        
-    }
-
     return {
         name,
         // picture,
-        getTotalLikes,
         getUserCardDOM,
         getUserImgDOM,
         getInfosUserDOM
