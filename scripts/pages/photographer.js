@@ -1,5 +1,6 @@
 // get user data with id in url
 const pathFileData = "../../data/photographers.json";
+var img_gallery, firstname;
 
 async function getPhotographerById() {
   // get params id in current url
@@ -59,6 +60,7 @@ async function displayUserData(photographer) {
 // display all images/videos of photographers
 async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
+  gallerySection.innerHTML = "";
 
   images.forEach((image, index) => {
       const mediaModel = mediaFactory(image, firstname);
@@ -82,8 +84,9 @@ async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
+  img_gallery = images;
 
-  const firstname = photographer.name.split(" ")[0].replace("-", " ");
+  firstname = photographer.name.split(" ")[0].replace("-", " ");
 
   displayUserData(photographer);
   displayGallery(images, firstname);
@@ -91,3 +94,13 @@ async function init() {
 }
 
 init();
+
+
+// add likes on post
+async function addLike(postId) {
+  const post = img_gallery.find(img => img.id === postId);
+  post.likes++;
+  await displayGallery(img_gallery, firstname);
+
+  // console.log(img_gallery);
+}

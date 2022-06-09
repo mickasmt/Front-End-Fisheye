@@ -92,7 +92,7 @@ function photographerFactory(data) {
     return {
         name,
         // picture,
-        totalLikes,
+        // totalLikes,
         getUserCardDOM,
         getUserImgDOM,
         getInfosUserDOM
