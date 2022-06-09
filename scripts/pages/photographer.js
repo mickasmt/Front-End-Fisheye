@@ -1,6 +1,6 @@
 // get user data with id in url
 const pathFileData = "../../data/photographers.json";
-var img_gallery, firstname;
+var postsGallery, firstname;
 
 async function getPhotographerById() {
   // get params id in current url
@@ -60,6 +60,8 @@ async function displayUserData(photographer) {
 // display all images/videos of photographers
 async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
+
+  // remove all child if user like one post in gallery
   gallerySection.innerHTML = "";
 
   images.forEach((image, index) => {
@@ -67,6 +69,9 @@ async function displayGallery(images, firstname) {
       const mediaCardDOM = mediaModel.getMediaCardDOM(index);
       gallerySection.appendChild(mediaCardDOM);
   });
+
+  // update total likes
+  photographerFactory().getTotalLikes(countLikes);
 }
 
 // create all slides for lightbox
@@ -84,7 +89,7 @@ async function init() {
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
-  img_gallery = images;
+  postsGallery = images;
 
   firstname = photographer.name.split(" ")[0].replace("-", " ");
 
@@ -98,9 +103,19 @@ init();
 
 // add likes on post
 async function addLike(postId) {
-  const post = img_gallery.find(img => img.id === postId);
+  const post = postsGallery.find(img => img.id === postId);
   post.likes++;
-  await displayGallery(img_gallery, firstname);
 
-  // console.log(img_gallery);
+  displayGallery(postsGallery, firstname);
+}
+
+// add likes on post
+async function countLikes() {
+  var likes = 0;
+
+  postsGallery.forEach((post) => {
+    likes += post.likes;
+  });
+
+  return likes;
 }
