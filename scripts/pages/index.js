@@ -1,6 +1,7 @@
 async function getPhotographers() {
-    const pathFileData = window.location.origin + "/data/photographers.json";
-
+    // for ONLY github pages - not work on local
+    const pathFileData = window.location.host + "/Front-End-Fisheye/data/photographers.json";
+    
     // fetch data in file json and return
     try {
         let res = await fetch(pathFileData);
