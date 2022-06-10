@@ -27,6 +27,11 @@ for (i = 0; i < l; i++) {
         h = this.parentNode.previousSibling;
         for (i = 0; i < sl; i++) {
           if (s.options[i].innerHTML == this.innerHTML) {
+            /** Get value in the selected option
+             *  And launch sort function 
+             */
+             sortMedias(s.options[i].value)
+            
             s.selectedIndex = i;
             h.innerHTML = this.innerHTML;
             y = this.parentNode.getElementsByClassName("same-as-selected");
@@ -78,3 +83,29 @@ function closeAllSelect(elmnt) {
 /* If the user clicks anywhere outside the select box,
 then close all select boxes: */
 document.addEventListener("click", closeAllSelect);
+
+
+
+/**
+ * SORT BY Function 
+ */
+
+function sortMedias(value) {
+
+  switch (value) {
+    case 'popularity':
+      console.log('Oranges are popularity');
+      break;
+
+    case 'date':
+      console.log('Mangoes are $2.');
+      break;
+
+    case 'title':
+      console.log('papayas are $2.79 a pound.');
+      break;
+
+    default:
+      console.log(`Error ! ${expr} not found`);
+  }
+}
