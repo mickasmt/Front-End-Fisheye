@@ -1,7 +1,7 @@
 /**
  * VARIABLES
  */
-var postsGallery, firstname, array_likes;
+var postsGallery, firstname, array_likes, indices;
 
 
 // get user data with id in url
@@ -104,6 +104,8 @@ async function init() {
   array_likes = new Array(images.length).fill(0);
   firstname = photographer.name.split(" ")[0].replace("-", " ");
 
+  indices = postsGallery.map((_, i) => i);
+
   displayUserData(photographer);
   displayGallery(images, firstname);
   createSlidesLightbox(images, firstname);
@@ -129,8 +131,6 @@ async function getTotalLikes() {
   totalLikes.innerHTML = likes;   
 }
 
-
-
 // add likes on post
 async function addLike(postId, index) {
   // get post with postId
@@ -145,4 +145,40 @@ async function addLike(postId, index) {
   }
   
   displayGallery(postsGallery, firstname);
+}
+
+
+
+/**
+ * SORTBY PART 
+ */
+
+async function sortMedias(value) {
+  switch (value) {
+    case 'popularity':
+      indices.sort((a, b) => postsGallery[b].likes - postsGallery[a].likes);
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    case 'date':
+      indices.sort((a, b) => new Date (postsGallery[a].date) - new Date (postsGallery[b].date));
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    case 'title':
+      indices.sort((a, b) => postsGallery[a].title.localeCompare(postsGallery[b].title));
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    default:
+      console.log(`Error ! ${value} not found`);
+  }
+  
+  await displayGallery(postsGallery, firstname);
 }
