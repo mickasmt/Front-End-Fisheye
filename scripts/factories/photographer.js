@@ -1,7 +1,7 @@
 function photographerFactory(data) {
     const { id, portrait, city, country, tagline, price } = data;
 
-    const picture = `assets/photographers/${portrait}`;
+    const picture = `/Front-End-Fisheye/assets/photographers/${portrait}`;
     const url = `/Front-End-Fisheye/photographer.html?id=${id}`;
 
 
