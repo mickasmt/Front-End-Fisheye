@@ -6,7 +6,8 @@ var postsGallery, firstname, array_likes, indices;
 
 // get user data with id in url
 // for ONLY github pages - not work on local
-const pathFileData = window.location.host + "/Front-End-Fisheye/data/photographers.json";
+const pathFileData = "/Front-End-Fisheye/data/photographers.json";
+
 
 /**
  * FUNCTIONS
