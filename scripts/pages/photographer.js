@@ -1,3 +1,8 @@
+import { mediaFactory } from "../factories/media";
+import { photographerFactory } from "../factories/photographer";
+
+
+
 /**
  * VARIABLES
  */
@@ -134,7 +139,7 @@ async function getTotalLikes() {
 }
 
 // add likes on post
-async function addLike(postId, index) {
+export async function addLike(postId, index) {
   // get post with postId
   const post = postsGallery.find(img => img.id === postId);
 
@@ -155,7 +160,7 @@ async function addLike(postId, index) {
  * SORTBY PART 
  */
 
-async function sortMedias(value) {
+export async function sortMedias(value) {
   switch (value) {
     case 'popularity':
       indices.sort((a, b) => postsGallery[b].likes - postsGallery[a].likes);

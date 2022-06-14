@@ -1,3 +1,5 @@
+import photographerFactory from "../factories/photographer";
+
 async function getPhotographers() {
     // for ONLY github pages - not work on local
     const pathFileData = "/Front-End-Fisheye/data/photographers.json";
@@ -25,13 +27,13 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
     

@@ -1,5 +1,5 @@
 
-function displayLightbox(index) {
+export function displayLightbox(index) {
   document.getElementById("lightbox_modal").style.display = "flex";
   
   showSlides(index);
@@ -7,13 +7,13 @@ function displayLightbox(index) {
   // add eventlistener for keyboard
 }
 
-function closeLightbox() {
+export function closeLightbox() {
   document.getElementById("lightbox_modal").style.display = "none";
 }
 
 var currentIndex = 0;
 
-function plusSlides(n) {
+export function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 

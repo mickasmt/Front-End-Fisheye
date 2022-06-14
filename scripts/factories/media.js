@@ -1,12 +1,14 @@
-function mediaFactory(data, firstname) {
-    const { id, likes, photographerId, price, title } = data;
+import { displayLightbox } from "../utils/lightbox";
+
+export function mediaFactory(data, firstname) {
+    const { id, likes, title } = data;
 
     // check if image or video and return DOM element
     // add params for details video attribute for play in lightbox
     function getMediaTypeDOM(videoDetails) {
         const galleryUrl = `/Front-End-Fisheye/assets/gallery/${firstname}/`;
 
-        if(data.hasOwnProperty('image'))
+        if(Object.prototype.hasOwnProperty.call(data, "image"))
         {
             const img = document.createElement( 'img' );
             img.src = galleryUrl + data.image;
@@ -16,7 +18,7 @@ function mediaFactory(data, firstname) {
             return img;
         }
 
-        if(data.hasOwnProperty('video'))
+        if(Object.prototype.hasOwnProperty.call(data, "video"))
         {
             const video = document.createElement('video');
             video.src = galleryUrl + data.video;
@@ -60,7 +62,7 @@ function mediaFactory(data, firstname) {
 
         // pass id in addLike function for increase post like
         imgHeart.addEventListener('click', function(){
-            addLike(id, index);
+            this.addLike(id, index);
         })
 
         likesWrapper.appendChild(span);
