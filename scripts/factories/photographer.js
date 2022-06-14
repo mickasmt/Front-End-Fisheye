@@ -91,6 +91,7 @@ export function photographerFactory(data) {
     }
 
     return {
+        name,
         getUserCardDOM,
         getUserImgDOM,
         getInfosUserDOM

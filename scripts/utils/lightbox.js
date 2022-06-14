@@ -7,13 +7,15 @@ export function displayLightbox(index) {
   // add eventlistener for keyboard
 }
 
-export function closeLightbox() {
+// eslint-disable-next-line no-unused-vars
+function closeLightbox() {
   document.getElementById("lightbox_modal").style.display = "none";
 }
 
 var currentIndex = 0;
 
-export function plusSlides(n) {
+// eslint-disable-next-line no-unused-vars
+function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 

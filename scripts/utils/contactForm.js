@@ -1,9 +1,11 @@
-export function displayModal() {
+/* eslint-disable no-unused-vars */
+
+function displayModal() {
     const modal = document.getElementById("contact_modal");
 	modal.style.display = "flex";
 }
 
-export function closeModal() {
+function closeModal() {
     const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
