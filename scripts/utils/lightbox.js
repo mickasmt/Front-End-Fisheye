@@ -1,6 +1,5 @@
 var currentIndex = 0;
 
-
 export function displayLightbox(index) {
   document.getElementById("lightbox_modal").style.display = "flex";
   
@@ -10,16 +9,16 @@ export function displayLightbox(index) {
 }
 
 // eslint-disable-next-line no-unused-vars
-async function closeLightbox() {
+export function closeLightbox() {
   document.getElementById("lightbox_modal").style.display = "none";
 }
 
 // eslint-disable-next-line no-unused-vars
-async function plusSlides(n) {
+export function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 
-async function showSlides(index) {
+function showSlides(index) {
   var slides = document.getElementsByClassName("slide");
   currentIndex = index;
   

@@ -1,8 +1,10 @@
 import { mediaFactory } from "../factories/media.js";
 import { photographerFactory } from "../factories/photographer.js";
+import { closeLightbox, plusSlides } from "../utils/lightbox.js";
 
-
-
+// add function in window for onclick 
+window.plusSlides = plusSlides;
+window.closeLightbox = closeLightbox;
 /**
  * VARIABLES
  */
@@ -102,7 +104,7 @@ async function displayGallery(images, firstname) {
 }
 
 // init the page
-async function init() {
+async function init() { 
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
