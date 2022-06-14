@@ -8,14 +8,14 @@ export function displayLightbox(index) {
 }
 
 // eslint-disable-next-line no-unused-vars
-function closeLightbox() {
+export function closeLightbox() {
   document.getElementById("lightbox_modal").style.display = "none";
 }
 
 var currentIndex = 0;
 
 // eslint-disable-next-line no-unused-vars
-function plusSlides(n) {
+export function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 

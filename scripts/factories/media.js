@@ -1,4 +1,5 @@
 import { displayLightbox } from "../utils/lightbox.js";
+import { addLike } from "../pages/photographer.js";
 
 export function mediaFactory(data, firstname) {
     const { id, likes, title } = data;

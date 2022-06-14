@@ -140,7 +140,7 @@ async function getTotalLikes() {
 
 /** add likes on post */ 
 // eslint-disable-next-line no-unused-vars
-async function addLike(postId, index) {
+export async function addLike(postId, index) {
   // get post with postId
   const post = postsGallery.find(img => img.id === postId);
 
