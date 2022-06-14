@@ -1,4 +1,4 @@
-import photographerFactory from "../factories/photographer";
+import { photographerFactory } from "../factories/photographer";
 
 async function getPhotographers() {
     // for ONLY github pages - not work on local
