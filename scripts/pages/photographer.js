@@ -1,5 +1,5 @@
-import { mediaFactory } from "../factories/media";
-import { photographerFactory } from "../factories/photographer";
+import { mediaFactory } from "../factories/media.js";
+import { photographerFactory } from "../factories/photographer.js";
 
 
 

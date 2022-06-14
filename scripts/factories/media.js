@@ -1,4 +1,4 @@
-import { displayLightbox } from "../utils/lightbox";
+import { displayLightbox } from "../utils/lightbox.js";
 
 export function mediaFactory(data, firstname) {
     const { id, likes, title } = data;
