@@ -62,7 +62,8 @@ export function mediaFactory(data, firstname) {
 
         // pass id in addLike function for increase post like
         imgHeart.addEventListener('click', function(){
-            this.addLike(id, index);
+            // eslint-disable-next-line no-undef
+            addLike(id, index);
         })
 
         likesWrapper.appendChild(span);
