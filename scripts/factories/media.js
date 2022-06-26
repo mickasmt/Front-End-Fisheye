@@ -57,9 +57,14 @@ function mediaFactory(data, firstname) {
         imgHeart.classList.add("icon-heart");
         imgHeart.src = "/assets/icons/red_heart.png";
         imgHeart.alt = "likes";
+        imgHeart.tabIndex = 0;
 
         // pass id in addLike function for increase post like
         imgHeart.addEventListener('click', function(){
+            addLike(id, index);
+        });
+
+        imgHeart.addEventListener('keypress', function(){
             addLike(id, index);
         })
 
