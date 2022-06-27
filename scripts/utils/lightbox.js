@@ -1,17 +1,15 @@
+var currentIndex = 0;
+var lightboxModal = document.getElementById("lightbox_modal");
+var closeLightboxModal = document.getElementById('closeLightboxModal');
 
 function displayLightbox(index) {
-  document.getElementById("lightbox_modal").style.display = "flex";
-  
+  lightboxModal.style.display = "flex";
   showSlides(index);
-  
-  // add eventlistener for keyboard
 }
 
 function closeLightbox() {
-  document.getElementById("lightbox_modal").style.display = "none";
+  lightboxModal.style.display = "none";
 }
-
-var currentIndex = 0;
 
 function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
@@ -37,3 +35,7 @@ function showSlides(index) {
   // show only slide selected
   slides[currentIndex].style.display = "block";
 }
+
+["click", "keypress"].forEach((evt) =>
+  closeLightboxModal.addEventListener(evt, closeLightbox)
+);

@@ -41,7 +41,7 @@
         <p>Trier par</p>
         
         <div class="custom-select">
-          <select>
+          <select aria-labelledby="order by">
             <option value="0">Selectionner</option>
             <option value="popularity">Popularité</option>
             <option value="date">Date</option>
@@ -93,11 +93,11 @@
     <!-- End total likes & price -->
 
     <!-- Contact Modal -->
-    <div id="contact_modal">
+    <div id="contact_modal" role="dialog">
       <div class="modal">
         <header>
           <h1 id="titleContact">Contactez-moi </h1>
-          <img src="assets/icons/close.svg" onclick="closeModal()" />
+          <img src="assets/icons/close.svg" id="closeContactDialog" aria-label="close dialog" tabindex="0" />
         </header>
         <form method="get" id="contactForm">
           <div>
@@ -127,19 +127,26 @@
     <!-- End Contact Modal -->
 
     <!-- Lightbox Modal -->
-    <div id="lightbox_modal">
+    <div id="lightbox_modal" role="dialog" aria-label="image closeup view">
       <div class="lightbox">
         <div>
-          <a href="#" onclick="plusSlides(-1)">
-            <img src="assets/icons/arrow-left.svg" />
+          <a href="#" onclick="plusSlides(-1)" aria-label="previous image">
+            <img src="assets/icons/arrow-left.svg"  alt="prev"/>
           </a>
         </div>
         <div class="slides_section"></div>
         <div class="right">
-          <a href="#" onclick="plusSlides(1)">
-            <img src="assets/icons/arrow-right.svg" />
+          <a href="#" onclick="plusSlides(1)" aria-label="next image">
+            <img src="assets/icons/arrow-right.svg" alt="next" />
           </a>
-          <img class="close" src="assets/icons/close-red.svg" onclick="closeLightbox()" />
+          <img
+            class="close"
+            src="assets/icons/close-red.svg"
+            id="closeLightboxModal"
+            alt="close"
+            aria-label="close dialog"
+            tabindex="0"
+          />
         </div>
       </div>
     </div>

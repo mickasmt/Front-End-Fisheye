@@ -1,18 +1,14 @@
+var modal = document.getElementById("contact_modal");
+var contactForm = document.getElementById('contactForm');
+var closeContactForm = document.getElementById('closeContactDialog');
+
 function displayModal() {
-    const modal = document.getElementById("contact_modal");
 	modal.style.display = "flex";
 }
 
 function closeModal() {
-    const modal = document.getElementById("contact_modal");
     modal.style.display = "none";
 }
-
-
-var contactForm = document.getElementById('contactForm');
-
-// validation form event: SUBMIT
-contactForm.addEventListener("submit", formValidation);
 
 /** Manage validation form */
 function formValidation(e) {
@@ -25,3 +21,10 @@ function formValidation(e) {
         console.log(pair[0]+ ' - ' + pair[1]); 
     }
 }
+
+// validation form event: SUBMIT
+contactForm.addEventListener("submit", formValidation);
+
+["click", "keypress"].forEach((evt) =>
+    closeContactForm.addEventListener(evt, closeModal)
+);
