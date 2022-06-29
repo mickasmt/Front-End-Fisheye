@@ -52,33 +52,7 @@
       <!-- End sort section -->
 
       <!-- Gallery section -->
-      <div class="gallery_section">
-        <!-- <article>
-          <a href="#">
-            <video src="./assets/gallery/Ellie Rose/Sport_Tricks_in_the_air.mp4"></video>
-          </a>
-          <div class="infos-wrapper">
-            <p>Arc-en-ciel</p>
-            <div class="like">
-              <span>12</span>
-              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
-            </div>
-          </div>
-        </article>
-
-        <article>
-          <a href="#">
-            <img src="./assets/gallery/Ellie Rose/Architecture_Connected_Curves.jpg" alt="">
-          </a>
-          <div class="infos-wrapper">
-            <p>Arc-en-ciel</p>
-            <div class="like">
-              <span>12</span>
-              <img class="icon-heart" src="/assets/icons/red_heart.png" alt="likes">
-            </div>
-          </div>
-        </article>-->
-      </div>
+      <div class="gallery_section"></div>
       <!-- End gallery section -->
     </main>
 
@@ -93,7 +67,7 @@
     <!-- End total likes & price -->
 
     <!-- Contact Modal -->
-    <div id="contact_modal" role="dialog" aria-modal="true" aria-label="contact me" tabindex="-1">
+    <div id="contact_modal" role="dialog" aria-modal="true" aria-label="contact me">
       <div class="modal">
         <header>
           <h1 id="titleContact">Contactez-moi </h1>
@@ -129,7 +103,7 @@
     <!-- End Contact Modal -->
 
     <!-- Lightbox Modal -->
-    <div id="lightbox_modal" role="dialog" aria-label="image closeup view" tabindex="-1">
+    <div id="lightbox_modal" role="dialog" aria-label="image closeup view">
       <div class="lightbox">
         <div>
           <a href="#" onclick="plusSlides(-1)" aria-label="previous image">
@@ -155,11 +129,10 @@
     <!-- End Lightbox Modal -->
 
     <!-- Scripts -->
-    <!-- <script defer src="/scripts/factories/media.js"></script> -->
-    <!-- <script defer src="/scripts/factories/photographer.js"></script> -->
     <script type="module" src="/scripts/pages/photographer.js"></script>
     <script type="module" src="/scripts/utils/lightbox.js"></script>
     <script type="module" src="/scripts/utils/customSelect.js"></script>
-    <script defer src="/scripts/utils/contactForm.js"></script>
+    <script type="module" src="/scripts/utils/trapFocusModal.js"></script>
+    <script type="module" src="/scripts/utils/contactForm.js"></script>
   </body>
 </html>
