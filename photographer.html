@@ -93,11 +93,13 @@
     <!-- End total likes & price -->
 
     <!-- Contact Modal -->
-    <div id="contact_modal" role="dialog">
+    <div id="contact_modal" role="dialog" aria-modal="true" aria-label="contact me" tabindex="-1">
       <div class="modal">
         <header>
           <h1 id="titleContact">Contactez-moi </h1>
-          <img src="assets/icons/close.svg" id="closeContactDialog" aria-label="close dialog" tabindex="0" />
+          <button id="closeContactDialog">
+            <img src="assets/icons/close.svg" aria-label="close dialog" />
+          </button>
         </header>
         <form method="get" id="contactForm">
           <div>
@@ -127,7 +129,7 @@
     <!-- End Contact Modal -->
 
     <!-- Lightbox Modal -->
-    <div id="lightbox_modal" role="dialog" aria-label="image closeup view">
+    <div id="lightbox_modal" role="dialog" aria-label="image closeup view" tabindex="-1">
       <div class="lightbox">
         <div>
           <a href="#" onclick="plusSlides(-1)" aria-label="previous image">
