@@ -79,6 +79,9 @@ async function displayUserData(photographer) {
 async function createSlidesLightbox(images, firstname) {
   const slidesSection = document.querySelector(".slides_section");
 
+  // remove all child if user sort gallery
+  slidesSection.innerHTML = "";
+
   images.forEach((image) => {
       const mediaModel = mediaFactory(image, firstname);
       const mediaSlideDOM = mediaModel.getMediaSlideDOM();
@@ -87,27 +90,20 @@ async function createSlidesLightbox(images, firstname) {
 }
 
 // display all images/videos of photographers
-async function displayGallery(images, firstname, indices) {
+async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
 
   // remove all child if user like one post in gallery
   gallerySection.innerHTML = "";
 
   images.forEach((image, index) => {
-    let mediaCardDOM;
-      const mediaModel = mediaFactory(image, firstname);
-      
-      if (indices) {
-        console.log(index);
-        console.log(indices);
-        console.log(indices[index]);
-        mediaCardDOM = mediaModel.getMediaCardDOM(indices[index]);
-      } else {
-        mediaCardDOM = mediaModel.getMediaCardDOM(index);
-      }
-
+      const mediaModel = mediaFactory(image, firstname);      
+      const mediaCardDOM = mediaModel.getMediaCardDOM(index);
       gallerySection.appendChild(mediaCardDOM);
   });
+
+  // update slides in lightbox
+  createSlidesLightbox(images, firstname);
 
   // update total likes
   getTotalLikes();
@@ -200,5 +196,5 @@ export async function sortMedias(value) {
       console.log(`Error ! ${value} not found`);
   }
   
-  await displayGallery(postsGallery, firstname, indices);
+  await displayGallery(postsGallery, firstname, true);
 }
