@@ -1,3 +1,5 @@
+import { sortMedias } from "../pages/photographer.js";
+
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
@@ -29,7 +31,7 @@ for (i = 0; i < l; i++) {
     ["click", "keypress"].forEach((evt) =>
       c.addEventListener(
         evt,
-        function (e) {
+        function () {
           /* When an item is clicked, update the original select box,
         and the selected item: */
           var y, i, k, s, h, sl, yl;

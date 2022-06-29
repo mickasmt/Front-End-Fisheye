@@ -1,16 +1,19 @@
-async function getPhotographers() {
-    const pathFileData = window.location.origin + "/data/photographers.json";
+import { photographerFactory } from "../factories/photographer.js";
 
+async function getPhotographers() {
+    // for ONLY github pages - not work on local
+    const pathFileData = "/Front-End-Fisheye/data/photographers.json";
+    
     // fetch data in file json and return
     try {
         let res = await fetch(pathFileData);
-        return await res.json();
+        // return await res.json();
         
-        // let response = await res.json();
+        let response = await res.json();
         // console.log(response.photographers);
-        // return {
-        //     photographers: response.photographers
-        // };
+        return {
+            photographers: response.photographers
+        };
     } catch (error) {
         console.log(error);
     }
@@ -24,13 +27,13 @@ async function displayData(photographers) {
         const userCardDOM = photographerModel.getUserCardDOM();
         photographersSection.appendChild(userCardDOM);
     });
-};
+}
 
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();
     displayData(photographers);
-};
+}
 
 init();
     

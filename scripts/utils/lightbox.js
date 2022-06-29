@@ -1,3 +1,4 @@
+/* eslint-disable no-unused-vars */
 var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');

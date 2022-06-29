@@ -1,3 +1,10 @@
+import { mediaFactory } from "../factories/media.js";
+import { photographerFactory } from "../factories/photographer.js";
+import { closeLightbox, plusSlides } from "../utils/lightbox.js";
+
+// add function in window for onclick 
+window.plusSlides = plusSlides;
+window.closeLightbox = closeLightbox;
 /**
  * VARIABLES
  */
@@ -5,7 +12,9 @@ var postsGallery, firstname, array_likes, indices;
 
 
 // get user data with id in url
-const pathFileData = window.location.origin + "/data/photographers.json";
+// for ONLY github pages - not work on local
+const pathFileData = "/Front-End-Fisheye/data/photographers.json";
+
 
 /**
  * FUNCTIONS
@@ -95,7 +104,7 @@ async function displayGallery(images, firstname) {
 }
 
 // init the page
-async function init() {
+async function init() { 
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
   const images = await getGalleryByUserId(photographer.id);
@@ -131,8 +140,9 @@ async function getTotalLikes() {
   totalLikes.innerHTML = likes;   
 }
 
-// add likes on post
-async function addLike(postId, index) {
+/** add likes on post */ 
+// eslint-disable-next-line no-unused-vars
+export async function addLike(postId, index) {
   // get post with postId
   const post = postsGallery.find(img => img.id === postId);
 
@@ -153,7 +163,7 @@ async function addLike(postId, index) {
  * SORTBY PART 
  */
 
-async function sortMedias(value) {
+export async function sortMedias(value) {
   switch (value) {
     case 'popularity':
       indices.sort((a, b) => postsGallery[b].likes - postsGallery[a].likes);

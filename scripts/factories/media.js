@@ -1,12 +1,15 @@
-function mediaFactory(data, firstname) {
-    const { id, likes, photographerId, price, title } = data;
+import { displayLightbox } from "../utils/lightbox.js";
+import { addLike } from "../pages/photographer.js";
+
+export function mediaFactory(data, firstname) {
+    const { id, likes, title } = data;
 
     // check if image or video and return DOM element
     // add params for details video attribute for play in lightbox
     function getMediaTypeDOM(videoDetails) {
-        const galleryUrl = `/assets/gallery/${firstname}/`;
+        const galleryUrl = `/Front-End-Fisheye/assets/gallery/${firstname}/`;
 
-        if(data.hasOwnProperty('image'))
+        if(Object.prototype.hasOwnProperty.call(data, "image"))
         {
             const img = document.createElement( 'img' );
             img.src = galleryUrl + data.image;
@@ -16,7 +19,7 @@ function mediaFactory(data, firstname) {
             return img;
         }
 
-        if(data.hasOwnProperty('video'))
+        if(Object.prototype.hasOwnProperty.call(data, "video"))
         {
             const video = document.createElement('video');
             video.src = galleryUrl + data.video;
@@ -55,12 +58,13 @@ function mediaFactory(data, firstname) {
 
         const imgHeart = document.createElement( 'img' );
         imgHeart.classList.add("icon-heart");
-        imgHeart.src = "/assets/icons/red_heart.png";
+        imgHeart.src = "/Front-End-Fisheye/assets/icons/red_heart.png";
         imgHeart.alt = "likes";
         imgHeart.tabIndex = 0;
 
         // pass id in addLike function for increase post like
         imgHeart.addEventListener('click', function(){
+            // eslint-disable-next-line no-undef
             addLike(id, index);
         });
 

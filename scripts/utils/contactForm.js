@@ -2,6 +2,7 @@ var modal = document.getElementById("contact_modal");
 var contactForm = document.getElementById("contactForm");
 var closeContactForm = document.getElementById("closeContactDialog");
 
+// eslint-disable-next-line no-unused-vars
 function displayModal() {
   modal.style.display = "flex";
   //   modal.focus();
