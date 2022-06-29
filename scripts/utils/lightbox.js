@@ -1,4 +1,3 @@
-/* eslint-disable no-unused-vars */
 var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');
@@ -8,11 +7,11 @@ export async function displayLightbox(index) {
   showSlides(index);
 }
 
-function closeLightbox() {
+export async function closeLightbox() {
   lightboxModal.style.display = "none";
 }
 
-function plusSlides(n) {
+export async function plusSlides(n) {
   if(n === 1 || n === -1) showSlides(currentIndex += n);
 }
 
