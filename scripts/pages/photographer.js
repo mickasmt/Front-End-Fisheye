@@ -1,12 +1,12 @@
 import { mediaFactory } from "../factories/media.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { displayModal } from "../utils/contactForm.js";
-import { closeLightbox, plusSlides } from "../utils/lightbox.js";
+import { plusSlides } from "../utils/lightbox.js";
 
 // add function in window for onclick 
 window.plusSlides = plusSlides;
 window.displayModal = displayModal;
-window.closeLightbox = closeLightbox;
+// window.closeLightbox = closeLightbox;
 /**
  * VARIABLES
  */
