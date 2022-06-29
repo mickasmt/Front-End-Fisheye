@@ -87,15 +87,22 @@ async function createSlidesLightbox(images, firstname) {
 }
 
 // display all images/videos of photographers
-async function displayGallery(images, firstname) {
+async function displayGallery(images, firstname, indices) {
   const gallerySection = document.querySelector(".gallery_section");
 
   // remove all child if user like one post in gallery
   gallerySection.innerHTML = "";
 
   images.forEach((image, index) => {
+    let mediaCardDOM;
       const mediaModel = mediaFactory(image, firstname);
-      const mediaCardDOM = mediaModel.getMediaCardDOM(index);
+      
+      if (indices) {
+        mediaCardDOM = mediaModel.getMediaCardDOM(indices[index]);
+      } else {
+        mediaCardDOM = mediaModel.getMediaCardDOM(index);
+      }
+
       gallerySection.appendChild(mediaCardDOM);
   });
 
@@ -190,5 +197,5 @@ export async function sortMedias(value) {
       console.log(`Error ! ${value} not found`);
   }
   
-  await displayGallery(postsGallery, firstname);
+  await displayGallery(postsGallery, firstname, indices);
 }
