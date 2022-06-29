@@ -1,18 +1,60 @@
+var focusedElementBeforeModal;
+
 var modal = document.getElementById("contact_modal");
 var contactForm = document.getElementById("contactForm");
 var closeContactForm = document.getElementById("closeContactDialog");
 
 // eslint-disable-next-line no-unused-vars
 function displayModal() {
-  modal.style.display = "flex";
-  //   modal.focus();
+  // Save current focus
+  focusedElementBeforeModal = document.activeElement;
+  
+  // Listen for and trap the keyboard
+  modal.addEventListener('keydown', trapTabKey);
+  
+  var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
 
-  trapFocus(modal);
+  var focusableElements = modal.querySelectorAll(focusableElementsString);
+
+  focusableElements = Array.prototype.slice.call(focusableElements);
+
+  var firstTabStop = focusableElements[0];
+  var lastTabStop = focusableElements[focusableElements.length - 1];
+
+  // show the contact modal
+  modal.style.display = "flex";
+
+  firstTabStop.focus();
+
+  function trapTabKey(e) {
+    // Check for TAB key press
+    if(e.keyCode === 9) {
+      // SHIFT + TAB 
+      if (e.shiftKey) {
+        if(document.activeElement === firstTabStop) {
+          e.preventDefault();
+          lastTabStop.focus();
+        }
+      // TAB
+      } else {
+        if (document.activeElement === lastTabStop) {
+          e.preventDefault();
+          firstTabStop.focus();
+        }
+      }
+    }
+
+    // ESCAPE
+    if (e.keyCode === 27) {
+      closeModal();
+    }
+  }
+  
 }
 
 function closeModal() {
-    modal.style.display = "none";
-    trapFocus(modal).onClose();
+  modal.style.display = "none";
+  focusedElementBeforeModal.focus();
 }
 
 /** Manage validation form */
@@ -33,46 +75,3 @@ contactForm.addEventListener("submit", formValidation);
 ["click", "keypress"].forEach((evt) =>
   closeContactForm.addEventListener(evt, closeModal)
 );
-
-const trapFocus = (element, prevFocusableElement = document.activeElement) => {
-  const focusableEls = Array.from(
-    element.querySelectorAll(
-      'a[href]:not([disabled]), button:not([disabled]), textarea:not([disabled]), input[type="text"]:not([disabled]), input[type="email"]:not([disabled]), input[type="radio"]:not([disabled]), input[type="checkbox"]:not([disabled]), select:not([disabled])'
-    )
-  );
-  const firstFocusableEl = focusableEls[0];
-  const lastFocusableEl = focusableEls[focusableEls.length - 1];
-  let currentFocus = null;
-
-  firstFocusableEl.focus();
-  currentFocus = firstFocusableEl;
-
-  const handleFocus = (e) => {
-    e.preventDefault();
-    // if the focused element "lives" in your modal container then just focus it
-    if (focusableEls.includes(e.target)) {
-      currentFocus = e.target;
-    } else {
-      // you're out of the container
-      // if previously the focused element was the first element then focus the last
-      // element - means you were using the shift key
-      if (currentFocus === firstFocusableEl) {
-        lastFocusableEl.focus();
-      } else {
-        // you previously were focused on the last element so just focus the first one
-        firstFocusableEl.focus();
-      }
-      // update the current focus var
-      currentFocus = document.activeElement;
-    }
-  };
-
-  document.addEventListener("focus", handleFocus, true);
-
-  return {
-    onClose: () => {
-      document.removeEventListener("focus", handleFocus, true);
-      prevFocusableElement.focus();
-    },
-  };
-};
