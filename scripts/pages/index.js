@@ -2,7 +2,7 @@ import { photographerFactory } from "../factories/photographer.js";
 
 async function getPhotographers() {
     // for ONLY github pages - not work on local
-    const pathFileData = "/Front-End-Fisheye/data/photographers.json";
+    const pathFileData = "/data/photographers.json";
     
     // fetch data in file json and return
     try {

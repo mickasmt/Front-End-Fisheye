@@ -7,7 +7,7 @@ export function mediaFactory(data, firstname) {
     // check if image or video and return DOM element
     // add params for details video attribute for play in lightbox
     function getMediaTypeDOM(videoDetails) {
-        const galleryUrl = `/Front-End-Fisheye/assets/gallery/${firstname}/`;
+        const galleryUrl = `/assets/gallery/${firstname}/`;
 
         if(Object.prototype.hasOwnProperty.call(data, "image"))
         {
@@ -58,7 +58,7 @@ export function mediaFactory(data, firstname) {
 
         const imgHeart = document.createElement( 'img' );
         imgHeart.classList.add("icon-heart");
-        imgHeart.src = "/Front-End-Fisheye/assets/icons/red_heart.png";
+        imgHeart.src = "/assets/icons/red_heart.png";
         imgHeart.alt = "likes";
         imgHeart.tabIndex = 0;
 

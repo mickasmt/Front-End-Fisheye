@@ -1,8 +1,8 @@
 export function photographerFactory(data) {
     const { id, portrait, city, country, tagline, price } = data;
 
-    const picture = `/Front-End-Fisheye/assets/photographers/${portrait}`;
-    const url = `/Front-End-Fisheye/photographer.html?id=${id}`;
+    const picture = `/assets/photographers/${portrait}`;
+    const url = `/photographer.html?id=${id}`;
 
 
     function name() {
