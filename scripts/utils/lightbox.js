@@ -3,7 +3,7 @@ var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');
 
-function displayLightbox(index) {
+export async function displayLightbox(index) {
   lightboxModal.style.display = "flex";
   showSlides(index);
 }
