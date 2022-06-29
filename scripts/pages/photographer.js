@@ -98,6 +98,9 @@ async function displayGallery(images, firstname, indices) {
       const mediaModel = mediaFactory(image, firstname);
       
       if (indices) {
+        console.log(index);
+        console.log(indices);
+        console.log(indices[index]);
         mediaCardDOM = mediaModel.getMediaCardDOM(indices[index]);
       } else {
         mediaCardDOM = mediaModel.getMediaCardDOM(index);
