@@ -247,8 +247,9 @@ img.icon-heart {
     width: 100%;
 }
 
-.modal header img {
-    cursor: pointer;
+.modal header button {
+    background-color: transparent;
+    border: none;
 }
 
 .modal header h1 {
