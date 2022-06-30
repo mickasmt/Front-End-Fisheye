@@ -1,10 +1,13 @@
+// IMPORTS
 import { trapFocus } from "./trapFocusModal.js";
 
+// VARIABLES
 var modal = document.getElementById("contact_modal");
 var contactForm = document.getElementById("contactForm");
 var closeContactForm = document.getElementById("closeContactDialog");
 
 // eslint-disable-next-line no-unused-vars
+/** Open contact modal */
 export function displayModal() {
   // show the contact modal
   modal.style.display = "flex";
@@ -12,11 +15,12 @@ export function displayModal() {
   trapFocus(modal, closeModal);
 }
 
+/** Close contact modal */
 function closeModal() {
   modal.style.display = "none";
 }
 
-/** Manage validation form */
+/** Manage the validation contact form */
 function formValidation(e) {
   e.preventDefault();
 
@@ -28,62 +32,10 @@ function formValidation(e) {
   }
 }
 
-// validation form event: SUBMIT
+/** validation form event: SUBMIT */
 contactForm.addEventListener("submit", formValidation);
 
+/** close contact modal event: CLICK + KEYPRESS */
 ["click", "keypress"].forEach((evt) =>
   closeContactForm.addEventListener(evt, closeModal)
 );
-
-
-// function displayModal() {
-//   // show the contact modal
-//   modal.style.display = "flex";
-  
-//   // Save current focus
-//   focusedElementBeforeModal = document.activeElement;
-  
-//   // Listen for and trap the keyboard
-//   modal.addEventListener('keydown', trapTabKey);
-  
-//   var focusableElementsString = 'a[href], area[href], input:not([disabled]), select:not([disabled]), textarea:not([disabled]), button:not([disabled]), iframe, object, embed, [tabindex="0"], [contenteditable]';
-
-//   var focusableElements = modal.querySelectorAll(focusableElementsString);
-
-//   focusableElements = Array.prototype.slice.call(focusableElements);
-
-//   var firstTabStop = focusableElements[0];
-//   var lastTabStop = focusableElements[focusableElements.length - 1];
-
-//   firstTabStop.focus();
-
-//   function trapTabKey(e) {
-//     // Check for TAB key press
-//     if(e.keyCode === 9) {
-//       // SHIFT + TAB 
-//       if (e.shiftKey) {
-//         if(document.activeElement === firstTabStop) {
-//           e.preventDefault();
-//           lastTabStop.focus();
-//         }
-//       // TAB
-//       } else {
-//         if (document.activeElement === lastTabStop) {
-//           e.preventDefault();
-//           firstTabStop.focus();
-//         }
-//       }
-//     }
-
-//     // ESCAPE
-//     if (e.keyCode === 27) {
-//       closeModal();
-//     }
-//   }
-  
-// }
-
-// function closeModal() {
-//   modal.style.display = "none";
-//   focusedElementBeforeModal.focus();
-// }
