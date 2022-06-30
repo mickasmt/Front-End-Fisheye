@@ -1,14 +1,21 @@
-import { displayLightbox } from "../utils/lightbox.js";
+// IMPORTS
 import { addLike } from "../pages/photographer.js";
+import { displayLightbox } from "../utils/lightbox.js";
 
+/**Centralize all function for media
+ * @param  {object} data
+ * @param  {string} firstname
+ */
 export function mediaFactory(data, firstname) {
     const { id, likes, title } = data;
-
-    // check if image or video and return DOM element
-    // add params for details video attribute for play in lightbox
+    
+    /**Check if image or video field is in data object and return DOM element
+     * @param  {boolean} videoDetails
+     */
     function getMediaTypeDOM(videoDetails) {
         const galleryUrl = `/Front-End-Fisheye/assets/gallery/${firstname}/`;
 
+        // Return img tag if image field is in data
         if(Object.prototype.hasOwnProperty.call(data, "image"))
         {
             const img = document.createElement( 'img' );
@@ -19,6 +26,7 @@ export function mediaFactory(data, firstname) {
             return img;
         }
 
+        // Return video tag if video field is in data
         if(Object.prototype.hasOwnProperty.call(data, "video"))
         {
             const video = document.createElement('video');
@@ -32,6 +40,11 @@ export function mediaFactory(data, firstname) {
         }
     }
 
+
+    /**Create and return one media card DOM 
+     * Index parameter used  
+     * @param  {number} index
+     */
     function getMediaCardDOM(index) {
         const article = document.createElement( 'article' );
 
@@ -62,7 +75,7 @@ export function mediaFactory(data, firstname) {
         imgHeart.alt = "likes";
         imgHeart.tabIndex = 0;
 
-        // pass id in addLike function for increase post like
+        // pass id + index in addLike function for increase post like
         ["click", "keypress"].forEach((evt) =>
             imgHeart.addEventListener(evt, function(){
                 addLike(id, index);
@@ -85,6 +98,8 @@ export function mediaFactory(data, firstname) {
         return (article);
     }
 
+    /**Create and return one media slide DOM
+     */
     function getMediaSlideDOM() {        
         // create paragraphe for title
         const titleElt = document.createElement( 'p' );

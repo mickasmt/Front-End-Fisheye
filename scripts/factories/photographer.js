@@ -1,14 +1,21 @@
+
+/**Centralize all function for photographer
+ * @param  {object} data
+ */
 export function photographerFactory(data) {
     const { id, portrait, city, country, tagline, price } = data;
 
     const picture = `/Front-End-Fisheye/assets/photographers/${portrait}`;
     const url = `/Front-End-Fisheye/photographer.html?id=${id}`;
 
-
+    /**Return the name of the photographer
+     */
     function name() {
         return data.name;
     }
 
+    /**Create and return one user card DOM for index.html
+     */
     function getUserCardDOM() {
         const article = document.createElement( 'article' );
 
@@ -57,6 +64,8 @@ export function photographerFactory(data) {
         return (article);
     }
 
+    /**Create and return the left user infos DOM for header in photographer.html
+     */
     function getInfosUserDOM() {
         // create title 
         const h1 = document.createElement( 'h1' );
@@ -81,6 +90,8 @@ export function photographerFactory(data) {
         return (div);
     }
 
+    /**Create and return the right user image DOM for header in photographer.html
+     */
     function getUserImgDOM() {
         // create img tag for user profile img
         const img = document.createElement( 'img' );
