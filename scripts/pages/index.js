@@ -1,16 +1,20 @@
+// IMPORTS
 import { photographerFactory } from "../factories/photographer.js";
 
+/**Get and return all photographers in json file
+ */
 async function getPhotographers() {
-    // for ONLY github pages - not work on local
+    /**Path of the json file.
+     * Add "/Front-End-Fisheye" for path on github pages.
+     * Not work on local : Check the local branch for that 
+     */ 
     const pathFileData = "/Front-End-Fisheye/data/photographers.json";
     
     // fetch data in file json and return
     try {
         let res = await fetch(pathFileData);
-        // return await res.json();
-        
         let response = await res.json();
-        // console.log(response.photographers);
+        
         return {
             photographers: response.photographers
         };
@@ -19,6 +23,10 @@ async function getPhotographers() {
     }
 }
 
+
+/**Add all cards photographers in photographer_section on index.html
+ * @param  {object} photographers Data of all photographers
+ */
 async function displayData(photographers) {
     const photographersSection = document.querySelector(".photographer_section");
 
@@ -29,6 +37,8 @@ async function displayData(photographers) {
     });
 }
 
+/**Initialize the index page
+ */
 async function init() {
     // Récupère les datas des photographes
     const { photographers } = await getPhotographers();

@@ -1,27 +1,29 @@
+// IMPORTS
 import { mediaFactory } from "../factories/media.js";
 import { photographerFactory } from "../factories/photographer.js";
 import { displayModal } from "../utils/contactForm.js";
 import { plusSlides } from "../utils/lightbox.js";
 
-// add function in window for onclick 
+// Pass functions in window for onclick 
 window.plusSlides = plusSlides;
 window.displayModal = displayModal;
-// window.closeLightbox = closeLightbox;
-/**
- * VARIABLES
- */
+
+// ################### VARIABLES #####################
+
 var postsGallery, firstname, array_likes, indices;
 
-
-// get user data with id in url
-// for ONLY github pages - not work on local
+/**Path of the json file.
+ * Add "/Front-End-Fisheye" for path on github pages.
+ * Not work on local : Check the local branch for that 
+ */ 
 const pathFileData = "/Front-End-Fisheye/data/photographers.json";
 
 
-/**
- * FUNCTIONS
- */
+// ################### FUNCTIONS #####################
 
+/**Get and return one photographer in json file
+ * Extract ID parameter with searchParams
+ */
 async function getPhotographerById() {
   // get params id in current url
   const params = new URL(document.location).searchParams;
@@ -45,7 +47,9 @@ async function getPhotographerById() {
   }
 }
 
-// get all images for photographer with userId
+/**Get all images for one photographer with userId parameter
+ * @param  {number} userId
+ */
 async function getGalleryByUserId(userId) {
   // fetch data
   try {
@@ -53,7 +57,6 @@ async function getGalleryByUserId(userId) {
     let data = await res.json();
 
     let images = data.media.filter(media => media.photographerId === userId);
-    // console.log(images);
 
     return images;
   } catch (error) {
@@ -61,7 +64,9 @@ async function getGalleryByUserId(userId) {
   }
 }
 
-// display all infos of photographer
+/**Display all infos of photographer in header of photographer.html
+ * @param  {object} photographer
+ */
 async function displayUserData(photographer) {
   const infosProfile = document.querySelector("#infos");
   const imgProfile = document.querySelector("#photoProfile");
@@ -77,7 +82,10 @@ async function displayUserData(photographer) {
   imgProfile.appendChild(UserImgDOM);
 }
 
-// create all slides for lightbox
+/**Display all slides for lightbox in .slides_section
+ * @param  {object} images
+ * @param  {string} firstname
+ */
 async function createSlidesLightbox(images, firstname) {
   const slidesSection = document.querySelector(".slides_section");
 
@@ -91,7 +99,10 @@ async function createSlidesLightbox(images, firstname) {
   });
 }
 
-// display all images/videos of photographers
+/**Display all images/videos of the photographers in .gallery_section
+ * @param  {object} images
+ * @param  {string} firstname
+ */
 async function displayGallery(images, firstname) {
   const gallerySection = document.querySelector(".gallery_section");
 
@@ -111,7 +122,87 @@ async function displayGallery(images, firstname) {
   getTotalLikes();
 }
 
-// init the page
+
+// ##################### LIKES PART #####################
+
+/**Count all likes in the gallery and return in the bottom orange card
+ */
+async function getTotalLikes() {
+  var likes = 0;
+  const totalLikes = document.getElementById("total_likes");
+
+  postsGallery.forEach((post) => {
+    likes += post.likes;
+  });
+
+  totalLikes.innerHTML = likes;   
+}
+
+/**Add/remove like on the media card and update the media gallery
+ * @param  {number} postId
+ * @param  {number} index
+ */
+export async function addLike(postId, index) {
+  // get post with postId
+  const post = postsGallery.find(img => img.id === postId);
+
+  if(array_likes[index] === 0) {
+    post.likes++;
+    array_likes[index] = 1;
+  } else {
+    post.likes--;
+    array_likes[index] = 0;
+  }
+  
+  displayGallery(postsGallery, firstname);
+}
+
+
+// #################### SORTBY PART #####################
+
+/**Get the value in select option and sort the gallery media depending on the value
+ * @param  {string} value
+ */
+export async function sortMedias(value) {
+  switch (value) {
+    // sort on the likes field
+    case 'popularity':
+      indices.sort((a, b) => postsGallery[b].likes - postsGallery[a].likes);
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    // sort on the date field
+    case 'date':
+      indices.sort((a, b) => new Date (postsGallery[a].date) - new Date (postsGallery[b].date));
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    // sort on the title field
+    case 'title':
+      indices.sort((a, b) => postsGallery[a].title.localeCompare(postsGallery[b].title));
+
+      postsGallery = indices.map(i => postsGallery[i]);
+      array_likes = indices.map(i => array_likes[i]);
+      break;
+
+    // error if value is not found
+    default:
+      console.log(`Error ! ${value} not found`);
+  }
+  
+  // update the media gallery
+  await displayGallery(postsGallery, firstname);
+}
+
+
+// ##################### INIT PART #####################
+
+/**Initialize the photographer page
+ */
 async function init() { 
   // Récupère les données du photographe
   const photographer = await getPhotographerById();
@@ -132,71 +223,4 @@ init();
 
 
 
-/**
- * LIKES PART
- */
 
-// count all likes
-async function getTotalLikes() {
-  var likes = 0;
-  const totalLikes = document.getElementById("total_likes");
-
-  postsGallery.forEach((post) => {
-    likes += post.likes;
-  });
-
-  totalLikes.innerHTML = likes;   
-}
-
-/** add likes on post */ 
-// eslint-disable-next-line no-unused-vars
-export async function addLike(postId, index) {
-  // get post with postId
-  const post = postsGallery.find(img => img.id === postId);
-
-  if(array_likes[index] === 0) {
-    post.likes++;
-    array_likes[index] = 1;
-  } else {
-    post.likes--;
-    array_likes[index] = 0;
-  }
-  
-  displayGallery(postsGallery, firstname);
-}
-
-
-
-/**
- * SORTBY PART 
- */
-
-export async function sortMedias(value) {
-  switch (value) {
-    case 'popularity':
-      indices.sort((a, b) => postsGallery[b].likes - postsGallery[a].likes);
-
-      postsGallery = indices.map(i => postsGallery[i]);
-      array_likes = indices.map(i => array_likes[i]);
-      break;
-
-    case 'date':
-      indices.sort((a, b) => new Date (postsGallery[a].date) - new Date (postsGallery[b].date));
-
-      postsGallery = indices.map(i => postsGallery[i]);
-      array_likes = indices.map(i => array_likes[i]);
-      break;
-
-    case 'title':
-      indices.sort((a, b) => postsGallery[a].title.localeCompare(postsGallery[b].title));
-
-      postsGallery = indices.map(i => postsGallery[i]);
-      array_likes = indices.map(i => array_likes[i]);
-      break;
-
-    default:
-      console.log(`Error ! ${value} not found`);
-  }
-  
-  await displayGallery(postsGallery, firstname, true);
-}
