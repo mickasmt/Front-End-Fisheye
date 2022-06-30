@@ -5,6 +5,7 @@ import { trapFocus } from "./trapFocusModal.js";
 var modal = document.getElementById("contact_modal");
 var contactForm = document.getElementById("contactForm");
 var closeContactForm = document.getElementById("closeContactDialog");
+var focusedElementBeforeContactModal = document.activeElement;
 
 // eslint-disable-next-line no-unused-vars
 /** Open contact modal */
@@ -18,6 +19,7 @@ export function displayModal() {
 /** Close contact modal */
 function closeModal() {
   modal.style.display = "none";
+  focusedElementBeforeContactModal.focus();
 }
 
 /** Manage the validation contact form */

@@ -3,6 +3,8 @@ import { trapFocus } from "./trapFocusModal.js";
 var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');
+var focusedElementBeforeLightbox = document.activeElement;
+
 
 export async function displayLightbox(index) {
   lightboxModal.style.display = "flex";
@@ -12,6 +14,7 @@ export async function displayLightbox(index) {
 
 function closeLightbox() {
   lightboxModal.style.display = "none";
+  focusedElementBeforeLightbox.focus();
 }
 
 export async function plusSlides(n) {
