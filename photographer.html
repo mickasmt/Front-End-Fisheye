@@ -24,6 +24,7 @@
     <!-- End navigation bar -->
 
     <main class="container" id="main">
+
       <!-- Infos user -->
       <div class="photograph-header">
         <div class="infos" id="infos"></div>
@@ -54,17 +55,19 @@
       <!-- Gallery section -->
       <div class="gallery_section"></div>
       <!-- End gallery section -->
+      
+      <!-- Total likes & price -->
+      <div class="likesCounter">
+        <div class="likes">
+          <span id="total_likes"></span>
+          <img class="icon-heart" src="/Front-End-Fisheye/assets/icons/black_heart.png" alt="likes">
+        </div>
+        <span id="user_price">300€ / jour</span>
+      </div>
+      <!-- End total likes & price -->
+
     </main>
 
-    <!-- Total likes & price -->
-    <div class="likesCounter">
-      <div class="likes">
-        <span id="total_likes"></span>
-        <img class="icon-heart" src="/Front-End-Fisheye/assets/icons/black_heart.png" alt="likes">
-      </div>
-      <span id="user_price">300€ / jour</span>
-    </div>
-    <!-- End total likes & price -->
 
     <!-- Contact Modal -->
     <div id="contact_modal" role="dialog" aria-modal="true" aria-label="contact me">
@@ -134,5 +137,5 @@
     <script type="module" src="/Front-End-Fisheye/scripts/utils/customSelect.js"></script>
     <script type="module" src="/Front-End-Fisheye/scripts/utils/trapFocusModal.js"></script>
     <script type="module" src="/Front-End-Fisheye/scripts/utils/contactForm.js"></script>
-  </body>/Front-End-Fisheye
+  </body>
 </html>
