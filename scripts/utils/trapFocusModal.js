@@ -40,6 +40,7 @@ export async function trapFocus(
     // ESCAPE
     if (e.keyCode === 27) {
       closeFunction();
+      focusedElementBeforeModal.focus();
     }
   }
 }
