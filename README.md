@@ -1,6 +1,7 @@
-# Base de code du projet P6 - Parcours Front-end
+# Projet P6 - Parcours Front-end
 
-## Démarrer le projet
+## Front-End-Fisheye
 
-Rien à installer ici, il suffit d'ouvrir le fichier `index.html`.
-
+1. Cloner ce dépôt
+2. Installer les dépendances (Eslint) à l'aide de ```npm install```
+3. Utiliser les tests eslint avec la commande ````npm run lint```
