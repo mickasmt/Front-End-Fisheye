@@ -3,7 +3,6 @@ import { sortMedias } from "../pages/photographer.js";
 var x, i, j, l, ll, selElmnt, a, b, c;
 /* Look for any elements with the class "custom-select": */
 x = document.getElementsByClassName("custom-select");
-// console.log(x);
 
 l = x.length;
 for (i = 0; i < l; i++) {
@@ -77,9 +76,10 @@ for (i = 0; i < l; i++) {
   );
 }
 
+/** A function that will close all select boxes in the document,
+  except the current select box */
 function closeAllSelect(elmnt) {
-  /* A function that will close all select boxes in the document,
-  except the current select box: */
+  
   var x,
     y,
     i,
@@ -104,8 +104,6 @@ function closeAllSelect(elmnt) {
   }
 }
 
-/* If the user clicks anywhere outside the select box,
-then close all select boxes: */
 
 ["click", "keypress"].forEach((evt) =>
   document.addEventListener(evt, closeAllSelect)

@@ -1,7 +1,7 @@
-// Imports
+// IMPORTS
 import { trapFocus } from "./trapFocusModal.js";
 
-// Variables
+// VARIABLES
 var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');

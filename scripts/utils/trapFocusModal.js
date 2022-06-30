@@ -1,3 +1,8 @@
+/**Function for trap the tab focus inside the modal
+ * @param  {HTMLElement} element Modal element
+ * @param  {Function} closeFunction Function for close modal
+ * @param  {} focusedElementBeforeModal Get element before open modal. Example : button | Default value = document.activeElement
+ */
 export async function trapFocus(
   element,
   closeFunction,
@@ -19,6 +24,10 @@ export async function trapFocus(
 
   firstTabStop.focus();
 
+
+  /**Check the key press by user
+   * @param  {} e
+   */
   function trapTabKey(e) {
     // Check for TAB key press
     if (e.keyCode === 9) {

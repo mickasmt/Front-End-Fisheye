@@ -22,7 +22,9 @@ function closeModal() {
   focusedElementBeforeContactModal.focus();
 }
 
-/** Manage the validation contact form */
+/**Manage the validation contact form
+ * @param  {} e
+ */
 function formValidation(e) {
   e.preventDefault();
 
