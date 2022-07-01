@@ -96,7 +96,7 @@ export function photographerFactory(data) {
         // create img tag for user profile img
         const img = document.createElement( 'img' );
         img.setAttribute("src", picture);
-        img.setAttribute("alt", name());
+        img.setAttribute("alt", name);
 
         return (img);
     }
