@@ -20,7 +20,7 @@ export function mediaFactory(data, firstname) {
         {
             const img = document.createElement( 'img' );
             img.src = galleryUrl + data.image;
-            img.alt = " ";
+            img.alt = data.title;
             img.loading = "lazy";
             
             return img;
@@ -31,6 +31,7 @@ export function mediaFactory(data, firstname) {
         {
             const video = document.createElement('video');
             video.src = galleryUrl + data.video;
+            video.title = data.title;
 
             if(videoDetails) {
                 video.controls = true; 
