@@ -1,14 +1,15 @@
+// VARIABLES
+/**  Get focus element before open modal. Example : button */
+var focusedElementBeforeModal = null;
+
 /**Function for trap the tab focus inside the modal
  * @param  {HTMLElement} element Modal element
  * @param  {Function} closeFunction Function for close modal
- * @param  {} focusedElementBeforeModal Get element before open modal. Example : button | Default value = document.activeElement
+ * @param  {} focusedElementBeforeModal 
  */
-export async function trapFocus(
-  element,
-  closeFunction,
-  // eslint-disable-next-line no-unused-vars
-  focusedElementBeforeModal = document.activeElement
-) {
+export async function trapFocus(element, closeFunction) {
+  focusedElementBeforeModal = document.activeElement;
+
   // Listen for and trap the keyboard
   element.addEventListener("keydown", trapTabKey);
 
@@ -23,7 +24,6 @@ export async function trapFocus(
   var lastTabStop = focusableElements[focusableElements.length - 1];
 
   firstTabStop.focus();
-
 
   /**Check the key press by user
    * @param  {} e
@@ -52,4 +52,10 @@ export async function trapFocus(
       focusedElementBeforeModal.focus();
     }
   }
+}
+
+/**Focus the last element before open modal
+ */
+export async function focusLastElementBeforeModal() {
+  focusedElementBeforeModal.focus();
 }

@@ -1,11 +1,10 @@
 // IMPORTS
-import { trapFocus } from "./trapFocusModal.js";
+import { trapFocus, focusLastElementBeforeModal } from "./trapFocusModal.js";
 
 // VARIABLES
 var currentIndex = 0;
 var lightboxModal = document.getElementById("lightbox_modal");
 var closeLightboxModal = document.getElementById('closeLightboxModal');
-var focusedElementBeforeLightbox = document.activeElement;
 
 /**Open lightbox modal with index parameter
  * @param  {number} index
@@ -20,7 +19,7 @@ export async function displayLightbox(index) {
  */
 function closeLightbox() {
   lightboxModal.style.display = "none";
-  focusedElementBeforeLightbox.focus();
+  focusLastElementBeforeModal();
 }
 
 /**Prev or next element in lightbox 
